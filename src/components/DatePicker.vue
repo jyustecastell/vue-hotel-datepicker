@@ -634,7 +634,7 @@
     }
 
     @mixin device($device-widths) {
-        @media screen and #{$device-widths} {
+        @media screen and (#{$device-widths}) {
             @content
         }
     }
