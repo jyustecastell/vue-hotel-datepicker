@@ -5,12 +5,15 @@
       <div class="box">
         <h3>Allow check-in and check-out on the same day</h3>
         <input type="button" @click="buttonClick()">
+        <input type="button" @click="buttonClick2()" value="Load checkin i checkout">
         <DatePicker
           :minNights="1"
           @next-month-changed="nextMonthChanged"
           :textDates="textDates"
           :disabledDates="disabledDates"
           :footerText="footerText"
+          :startingDateValue="checkIn"
+          :endingDateValue="checkOut"
         />
       </div>
 
@@ -186,7 +189,9 @@
       return {
       	footerText:"* Precio desde en base a 2 adultos en habitación doble",
         textDates:[],
-          disabledDates:[],
+        disabledDates:[],
+        checkIn:null,
+        checkOut:null,
         ptPT: {
           night: 'Noite',
           nights: 'Noites',
@@ -201,6 +206,12 @@
         buttonClick:function(){
           this.textDates = [{'date':'2019-03-17','text':'<br>100€'},{'date':'2019-03-15','text':'<br>100€'},{'date':'2019-03-16','text':'<br>100€'},{'date':'2019-03-18','text':'<br>100€'},{'date':'2019-03-19','text':'<br>100€'},{'date':'2019-03-21','text':'<br>100€'},{'date':'2019-03-20','text':'<br>100€'}];
           this.disabledDates = ['2019-03-11','2019-03-12'];
+        },
+        buttonClick2:function(){
+          this.checkIn = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+          this.checkOut = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()+2);
+          console.log(this.checkIn);
+          console.log(this.checkOut);
         },
         nextMonthChanged:function(monthIndex){
             alert(monthIndex);

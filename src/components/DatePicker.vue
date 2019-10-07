@@ -310,6 +310,12 @@
             this.disabledDates = newVal;
             this.parseDisabledDates();
         },
+        startingDateValue(newVal) {
+          this.checkIn = newVal;
+        },
+        endingDateValue(newVal){
+            this.checkOut = newVal;
+        },
       checkIn(newDate) {
         this.$emit("check-in-changed", newDate)
       },
